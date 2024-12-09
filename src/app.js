@@ -1,4 +1,4 @@
-import { db, colRef, addDoc, Timestamp } from './firebase';
+import { db, colRef, addDoc, Timestamp, onSnapshot } from './firebase';
 
 class Chatroom{
     constructor(room, username){
@@ -19,6 +19,15 @@ class Chatroom{
         } catch (error) {
             console.error(err.message);
         }
+    }
+    getChats(callback){
+        onSnapshot(colRef, (snapshot) => {
+            snapshot.docChanges().forEach((change) => {
+                if(change.type === 'added'){
+                    callback(change.doc.data());
+                }
+            });
+        });
     }
 }
 
