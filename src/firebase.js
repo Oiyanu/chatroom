@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection } from "firebase/firestore";
+import { getFirestore, collection, addDoc, Timestamp } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -17,3 +17,5 @@ initializeApp(firebaseConfig);
 
 const db = getFirestore();
 const colRef = collection(db, 'todolists');
+
+export { db, colRef, addDoc, Timestamp}
