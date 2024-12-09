@@ -32,6 +32,9 @@ class Chatroom{
     updateRoom(room){
         this.room = room;
     }
+    updateUser(username){
+        this.username = username;
+    }
 }
 
 export default Chatroom;
