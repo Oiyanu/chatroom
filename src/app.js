@@ -29,6 +29,9 @@ class Chatroom{
             });
         });
     }
+    updateRoom(room){
+        this.room = room;
+    }
 }
 
 export default Chatroom;
