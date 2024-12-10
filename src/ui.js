@@ -1,3 +1,5 @@
+import { formatDistanceToNow } from 'date-fns';
+
 class ChatUI{
     constructor(list){
         this.list = list;
@@ -8,7 +10,7 @@ class ChatUI{
     renderChat(data){
         const when = formatDistanceToNow(data.created_at.toDate(), { addSuffix: true });
         const html = `<div>
-        <li><span>${data.username}</span>
+        <li class="list-group-item"><span>${data.username}</span>
         <span>${data.message}</span>
         <span>${when}</span>
         </li>
