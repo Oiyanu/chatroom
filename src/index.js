@@ -40,6 +40,7 @@ addForm.addEventListener('submit', e => {
 
 const chatui = new ChatUI(list);
 const chatroom = new Chatroom('gaming', 'joshua');
+
 chatroom.getChats((data) => {
-    console.log(data);
+    chatui.renderChat(data);
 });
