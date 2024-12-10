@@ -4,6 +4,21 @@ import ChatUI from "./ui";
 const addForm = document.querySelector('.new-chat');
 const room = document.querySelector('.chat-rooms');
 const list = document.querySelector('.chat-list');
+const newUser = document.querySelector('.new-name');
+const updatemssg = document.querySelector('.update-mssg');
+
+newUser.addEventListener('submit', e => {
+    e.preventDefault();
+
+    const term = newUser.name.value.trim();
+    if(term){
+        chatroom.updateUser(term);
+        newUser.reset();
+    }
+    updatemssg.innerText = `username updated to ${term}`;
+    setTimeout(() => updatemssg.innerText = '', 3000);
+
+});
 
 room.addEventListener('click', e => {
     if(e.target.tagName === 'BUTTON'){
