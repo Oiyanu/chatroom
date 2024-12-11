@@ -24,7 +24,7 @@ room.addEventListener('click', e => {
     if(e.target.tagName === 'BUTTON'){
         chatui.clear();
     }
-    chatroom.updateRoom(e.target.getAttribute('id'));
+    chatroom.updateRoom(e.target.getAttribute('id'))
     chatroom.getChats(data => chatui.renderChat(data));
 });
 
@@ -38,9 +38,8 @@ addForm.addEventListener('submit', e => {
     .catch(err => console.log(err.message));
 });
 
+// const username = localStorage.username ? localStorage.username : 'anon';
 const chatui = new ChatUI(list);
 const chatroom = new Chatroom('gaming', 'joshua');
 
-chatroom.getChats((data) => {
-    chatui.renderChat(data);
-});
+chatroom.getChats(data => chatui.renderChat(data));

@@ -18,4 +18,4 @@ initializeApp(firebaseConfig);
 const db = getFirestore();
 const colRef = collection(db, 'messages');
 
-export { db, colRef, addDoc, Timestamp, onSnapshot, query, where, orderBy}
+export { db, colRef, addDoc, Timestamp, onSnapshot, query, where, orderBy }

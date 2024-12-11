@@ -1,4 +1,4 @@
-import { db, colRef, addDoc, Timestamp, onSnapshot } from './firebase';
+import { db, colRef, addDoc, Timestamp, onSnapshot, query, where, orderBy } from './firebase';
 
 class Chatroom{
     constructor(room, username){
@@ -21,7 +21,8 @@ class Chatroom{
         }
     }
     getChats(callback){
-        onSnapshot(colRef, (snapshot) => {
+        const q = query(colRef, where("room", "==", this.room), orderBy('created_at', 'asc'));
+        this.unsub = onSnapshot(q, (snapshot) => {
             snapshot.docChanges().forEach((change) => {
                 if(change.type === 'added'){
                     callback(change.doc.data());
@@ -30,10 +31,12 @@ class Chatroom{
         });
     }
     updateRoom(room){
+        this.unsub();
         this.room = room;
     }
     updateUser(username){
         this.username = username;
+        localStorage.setItem('username', username);
     }
 }
 
