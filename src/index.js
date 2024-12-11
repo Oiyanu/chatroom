@@ -38,8 +38,8 @@ addForm.addEventListener('submit', e => {
     .catch(err => console.log(err.message));
 });
 
-// const username = localStorage.username ? localStorage.username : 'anon';
+const username = localStorage.username ? localStorage.username : 'anon';
 const chatui = new ChatUI(list);
-const chatroom = new Chatroom('gaming', 'joshua');
+const chatroom = new Chatroom('gaming', username);
 
 chatroom.getChats(data => chatui.renderChat(data));
